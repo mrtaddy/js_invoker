@@ -9,7 +9,7 @@ require "sprockets/railtie"
 # require "rails/test_unit/railtie"
 
 Bundler.require(*Rails.groups)
-require "gem_name"
+require "js_invoker"
 
 module TestApp
   class Application < Rails::Application

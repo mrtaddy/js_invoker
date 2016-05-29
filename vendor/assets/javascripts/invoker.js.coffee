@@ -1,8 +1,8 @@
 class JsInvoker
   constructor: (options = {})->
     @store = {}
-    @onDuplicatedEntry = options['onDuplicatedEntry']
-    @onNoEntry = options['onNoEntry']
+    @onDuplicatedEntry  = options['onDuplicatedEntry']
+    @onNotRegisterEntry = options['onNotRegisterEntry']
 
   register: (path, func)->
     if path of @store
@@ -17,7 +17,7 @@ class JsInvoker
       if path of @store
         @store[path]()
       else
-        @onNoEntry(path) if @onNoEntry
+        @onNotRegisterEntry(path) if @onNotRegisterEntry
 
   invokeOnlyFoundPaths: ->
     invokePaths = []

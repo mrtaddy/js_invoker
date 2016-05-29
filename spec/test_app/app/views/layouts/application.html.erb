@@ -7,8 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<%= js_invoke_tag %>
+<%= render 'shared/all' %>
 
 <%= yield %>
 
+<script type='text/javascript'>
+  $(function(){
+    jsInvoker.invokeOnlyFoundPaths();
+  });
+</script>
 </body>
 </html>

@@ -12,17 +12,21 @@ class JsInvoker
   list: ->
     @store
 
-  invoke: (invokePaths)->
+  invokeAll: (invokePaths)->
     for path in invokePaths
-      if path of @store
-        @store[path]()
-      else
-        @onNotRegisterEntry(path) if @onNotRegisterEntry
+      @invoke(path)
+
+  invoke: (path)->
+    if path of @store
+      @store[path]()
+    else
+      @onNotRegisterEntry(path) if @onNotRegisterEntry
 
   invokeOnlyFoundPaths: ->
     invokePaths = []
     $('div[data-js-invoke]').each ->
       path = $(this).data('js-invoke')
       invokePaths.push(path) unless path in invokePaths
-    @invoke(invokePaths)
+    @invokeAll(invokePaths)
+
 window.JsInvoker = JsInvoker

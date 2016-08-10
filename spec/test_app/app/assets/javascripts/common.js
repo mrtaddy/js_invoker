@@ -26,5 +26,10 @@ jsInvoker.register('page/third', function() {
 jsInvoker.register('page/fourth', function() {
   appendLabel('#fourth#');
 });
+
+jsInvoker.register('specified_path', function() {
+  appendLabel('#specified#');
+});
+
 window.jsInvoker = jsInvoker
 

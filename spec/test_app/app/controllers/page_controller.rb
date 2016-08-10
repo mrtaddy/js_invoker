@@ -3,4 +3,5 @@ class PageController < ApplicationController
   def second; end
   def third; end
   def fourth; end
+  def specified; end
 end

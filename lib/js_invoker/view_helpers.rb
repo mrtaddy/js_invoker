@@ -3,12 +3,14 @@ module JsInvoker
   module ViewHelpers
     VIEW_CALLER_STEP = 2
 
-    def js_invoke_tag
-      content_tag(:div, '', {'data-js-invoke' => shorten_path, style: 'display:none'})
+    def js_invoke_tag(specified_path = nil)
+      path = specified_path || shorten_path
+      content_tag(:div, '', {'data-js-invoke' => path, style: 'display:none'})
     end
 
-    def js_invoke_immediately_tag
-      javascript_tag "window.jsInvoker.invoke('#{shorten_path}');"
+    def js_invoke_immediately_tag(specified_path = nil)
+      path = specified_path || shorten_path
+      javascript_tag "window.jsInvoker.invoke('#{path}');"
     end
 
     def shorten_path

@@ -20,3 +20,5 @@ tmp
 *.o
 *.a
 mkmf.log
+spec/test_app/log/*.log
+spec/test_app/db/*

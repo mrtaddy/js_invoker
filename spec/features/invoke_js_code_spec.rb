@@ -8,6 +8,7 @@ feature 'Invoke registered function', js: true do
   let(:label3) { '#third#' }
   let(:label4) { '#fourth#' }
   let(:label_specified) { '#specified#' }
+  let(:label_specified_and_immediately) { '#specified_and_immediately#' }
 
   scenario 'Invoke function' do
     visit '/first'
@@ -18,9 +19,10 @@ feature 'Invoke registered function', js: true do
     expect(page).to_not have_content label3
     expect(page).to_not have_content label4
     expect(page).to_not have_content label_specified
+    expect(page).to_not have_content label_specified_and_immediately
   end
 
-  scenario 'Invoke function' do
+  scenario 'Invoke other function' do
     visit '/second'
     expect(page).to have_content label_layout
     expect(page).to have_content label_all
@@ -29,9 +31,10 @@ feature 'Invoke registered function', js: true do
     expect(page).to_not have_content label3
     expect(page).to_not have_content label4
     expect(page).to_not have_content label_specified
+    expect(page).to_not have_content label_specified_and_immediately
   end
 
-  scenario 'Invoke function' do
+  scenario 'Not Invoke function' do
     visit '/third'
     expect(page).to have_content label_layout
     expect(page).to have_content label_all
@@ -40,6 +43,7 @@ feature 'Invoke registered function', js: true do
     expect(page).to_not have_content label3
     expect(page).to_not have_content label4
     expect(page).to_not have_content label_specified
+    expect(page).to_not have_content label_specified_and_immediately
   end
 
   scenario 'Invoke function on multiple pages' do
@@ -51,6 +55,7 @@ feature 'Invoke registered function', js: true do
     expect(page).to_not have_content label3
     expect(page).to_not have_content label4
     expect(page).to_not have_content label_specified
+    expect(page).to_not have_content label_specified_and_immediately
 
     visit '/third'
     expect(page).to have_content label_layout
@@ -60,9 +65,10 @@ feature 'Invoke registered function', js: true do
     expect(page).to_not have_content label3
     expect(page).to_not have_content label4
     expect(page).to_not have_content label_specified
+    expect(page).to_not have_content label_specified_and_immediately
   end
 
-  scenario 'Invoke Immediately function' do
+  scenario 'Invoke function on immediately' do
     visit '/fourth'
     expect(page).to have_content label_layout
     expect(page).to have_content label_all
@@ -71,6 +77,7 @@ feature 'Invoke registered function', js: true do
     expect(page).to_not have_content label3
     expect(page).to have_content label4
     expect(page).to_not have_content label_specified
+    expect(page).to_not have_content label_specified_and_immediately
   end
 
   scenario 'Invoke function with specified path' do
@@ -82,5 +89,6 @@ feature 'Invoke registered function', js: true do
     expect(page).to_not have_content label3
     expect(page).to_not have_content label4
     expect(page).to have_content label_specified
+    expect(page).to have_content label_specified_and_immediately
   end
 end

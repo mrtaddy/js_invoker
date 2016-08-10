@@ -31,5 +31,8 @@ jsInvoker.register('specified_path', function() {
   appendLabel('#specified#');
 });
 
+jsInvoker.register('specified_and_immediately_path', function() {
+  appendLabel('#specified_and_immediately#');
+});
 window.jsInvoker = jsInvoker
 
